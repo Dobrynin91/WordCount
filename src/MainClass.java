@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class MainClass {
   public static void main(String[] args) throws IOException {
 
-    File file = new File("E:\\Программы\\Обучение\\ТЗ_01.txt");
+    File file = new File("E:\\Программы\\Обучение\\new 1.txt");
     Scanner scanner = new Scanner(file);
 
     List<String> list = new ArrayList<>();
@@ -15,11 +15,10 @@ public class MainClass {
       String[] arrayTime = scanner.nextLine().split(" ");
       for (int i = 0; i < arrayTime.length; i++) {
         list.add(arrayTime[i]);
-        System.out.println(list.get(i));
       }
     }
     scanner.close();
-    /*BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     String name = reader.readLine();
 
     int wordCount = 0;
@@ -33,6 +32,5 @@ public class MainClass {
 
   public static void printCount(int x) {
     System.out.println(x);
-  }*/
   }
 }
