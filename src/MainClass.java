@@ -14,11 +14,12 @@ public class MainClass {
     while (scanner.hasNextLine()) {
       String[] arrayTime = scanner.nextLine().split(" ");
       for (int i = 0; i < arrayTime.length; i++) {
-        list.add(arrayTime[i].toLowerCase());
+        list.add(arrayTime[i]);
+        System.out.println(list.get(i));
       }
     }
     scanner.close();
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    /*BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     String name = reader.readLine();
 
     int wordCount = 0;
@@ -32,6 +33,6 @@ public class MainClass {
 
   public static void printCount(int x) {
     System.out.println(x);
+  }*/
   }
 }
-
