@@ -26,4 +26,5 @@ hs_err_pid*
 .idea/vcs.xml
 .gitignore
 WordCount.iml
+MainClass.class
 
