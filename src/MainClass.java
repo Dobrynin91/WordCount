@@ -1,39 +1,37 @@
-
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class MainClass {
   public static void main(String[] args) throws IOException {
 
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    try {
-      File file = new File("new1.txt");
-      Scanner scanner = new Scanner(file);
+    String requestWord = reader.readLine().toLowerCase();
 
-      List<String> list = new ArrayList<>();
-      while (scanner.hasNextLine()) {
-        String[] arrayTime = scanner.nextLine().toLowerCase().split(" ");
+    int wordCount = 0;
+
+    File file = new File("new1.txt");
+
+    try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+      String line;
+      while ((line = br.readLine()) != null) {
+        ArrayList<String> list = new ArrayList<>();
+        String[] arrayTime = line.toLowerCase().split(" ");
         for (int i = 0; i < arrayTime.length; i++) {
           list.add(arrayTime[i]);
+          for (int j = 0; j < list.size(); j++) {
+            if (list.get(i).equals(requestWord)) {
+              wordCount++;
+            }
+          }
         }
       }
-      scanner.close();
-      String name = reader.readLine().toLowerCase();
-      int wordCount = 0;
-      for (int i = 0; i < list.size(); i++) {
-        if (list.get(i).equals(name)) {
-          wordCount++;
-        }
-      }
-      printCount(wordCount);
     } catch (FileNotFoundException e) {
-      System.out.println("Pathfile is not found");
+      //System.out.println("The pathfile is not found");
     }
+    printCount(wordCount);
   }
 
-  public static void printCount(int x) {
+  private static void printCount(int x) {
     System.out.println(x);
   }
 }
