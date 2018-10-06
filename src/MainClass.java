@@ -26,7 +26,7 @@ public class MainClass {
         }
       }
     } catch (FileNotFoundException e) {
-      //System.out.println("The pathfile is not found");
+      System.out.println("The pathfile is not found");
     }
     printCount(wordCount);
   }
