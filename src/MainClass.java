@@ -18,10 +18,10 @@ public class MainClass {
         String[] arrayTime = line.toLowerCase().split(" ");
         for (int i = 0; i < arrayTime.length; i++) {
           list.add(arrayTime[i]);
-          for (int j = 0; j < list.size(); j++) {
-            if (list.get(i).equals(requestWord)) {
-              wordCount++;
-            }
+        }
+        for (int j = 0; j < list.size(); j++) {
+          if (list.get(j).equals(requestWord)) {
+            wordCount++;
           }
         }
       }
