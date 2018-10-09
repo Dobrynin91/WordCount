@@ -1,37 +1,41 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class MainClass {
   public static void main(String[] args) throws IOException {
 
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    String requestWord = reader.readLine().toLowerCase();
-
-    int wordCount = 0;
-
     File file = new File("new1.txt");
-
+    TreeMap<String, Integer> map = new TreeMap<>();
     try (BufferedReader br = new BufferedReader(new FileReader(file))) {
       String line;
       while ((line = br.readLine()) != null) {
-        ArrayList<String> list = new ArrayList<>();
-        String[] arrayTime = line.toLowerCase().split("\\s|\\p{Punct}");
-        for (int i = 0; i < arrayTime.length; i++) {
-          list.add(arrayTime[i]);
-        }
-        for (int j = 0; j < list.size(); j++) {
-          if (list.get(j).equals(requestWord)) {
-            wordCount++;
+        String[] array = line.toLowerCase().split("\\p{Punct}|\\s");
+        for (int i = 0; i < array.length; i++) {
+          if (map.containsKey(array[i])) {
+            map.replace(array[i], map.get(array[i]) + 1);
+          } else {
+            map.put(array[i], 1);
           }
         }
       }
     } catch (FileNotFoundException e) {
       System.out.println("The pathfile is not found");
     }
-    printCount(wordCount);
+    printMap(map);
   }
 
-  private static void printCount(int x) {
-    System.out.println(x);
+  private static void times(int x) {
+    if
+  }
+  private static void printMap(TreeMap<String, Integer> everyMap) {
+    System.out.println("The five most common words:");
+    for (Map.Entry<String, Integer> pair : everyMap.entrySet()) {
+      String key = pair.getKey();
+      Integer value = pair.getValue();
+      System.out.println(key + " has been found " + value + "times(value)");
+    }
   }
 }
