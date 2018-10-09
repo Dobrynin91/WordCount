@@ -1,6 +1,4 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -27,9 +25,9 @@ public class MainClass {
     printMap(map);
   }
 
-  private static void times(int x) {
-    if
-  }
+//  private static void times(int x) {
+//    if
+//  }
   private static void printMap(TreeMap<String, Integer> everyMap) {
     System.out.println("The five most common words:");
     for (Map.Entry<String, Integer> pair : everyMap.entrySet()) {
