@@ -15,7 +15,7 @@ public class MainClass {
       String line;
       while ((line = br.readLine()) != null) {
         ArrayList<String> list = new ArrayList<>();
-        String[] arrayTime = line.toLowerCase().split(" ");
+        String[] arrayTime = line.toLowerCase().split("\\s|\\p{Punct}");
         for (int i = 0; i < arrayTime.length; i++) {
           list.add(arrayTime[i]);
         }
