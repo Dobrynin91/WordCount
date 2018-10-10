@@ -10,7 +10,7 @@ public class MainClass {
     try (BufferedReader br = new BufferedReader(new FileReader(file))) {
       String line;
       while ((line = br.readLine()) != null) {
-        String[] array = line.toLowerCase().split("\\p{Punct}|\\s");
+        String[] array = line.toLowerCase().split("\\w|\\s");
         for (int i = 0; i < array.length; i++) {
           if (map.containsKey(array[i])) {
             map.replace(array[i], map.get(array[i]) + 1);
