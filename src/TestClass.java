@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.regex.Pattern;
@@ -13,7 +15,6 @@ public class TestClass {
     try (BufferedReader br = new BufferedReader(new FileReader(file))) {
       String line;
       while ((line = br.readLine()) != null) {
-        System.out.println("line = " + line);
         String[] split = pattern.split(line.toLowerCase());
         for (String s : split) {
           if (!s.equals("")) {
@@ -28,26 +29,20 @@ public class TestClass {
     } catch (FileNotFoundException e) {
       System.out.println("The pathfile is not found");
     }
-//    printMap(map);
-    TreeMap<Integer, String> mapTemp = new TreeMap<>();
+    ArrayList<WordCount> list = new ArrayList<>();
     for (Map.Entry<String, Integer> pair : map.entrySet()) {
-      String key = pair.getKey();
-      Integer value = pair.getValue();
-      mapTemp.put(value, key);
+      WordCount wordCount = new WordCount(pair.getValue(), pair.getKey());
+      list.add(wordCount);
     }
-    for (Map.Entry<Integer, String> pair : mapTemp.entrySet()) {
-      Integer key = pair.getKey();
-      String value = pair.getValue();
-      System.out.println(key + " " + value);
-    }
-  }
-
-  private static void printMap(TreeMap<String, Integer> everyMap) {
-    System.out.println("The five most common words:");
-    for (Map.Entry<String, Integer> pair : everyMap.entrySet()) {
-      String key = pair.getKey();
-      Integer value = pair.getValue();
-      System.out.println(key + " has been found " + value + "times");
+    list.sort(new Comparator<WordCount>() {
+      @Override
+      public int compare(WordCount o1, WordCount o2) {
+        return Integer.compare(o1.count, o2.count);
+      }});
+    int sizeTop = 5;
+    for (int i = list.size()-1; i > list.size()-(sizeTop+1); i--) {
+      WordCount wordCount = list.get(i);
+      System.out.println(wordCount);
     }
   }
 }
